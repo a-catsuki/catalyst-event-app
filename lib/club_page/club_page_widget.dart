@@ -1,7 +1,7 @@
 import '/components/app_icon/app_icon_widget.dart';
 import '/components/club_card/club_card_widget.dart';
-import '/components/club_list/club_list_widget.dart';
-import '/components/support_button/support_button_widget.dart';
+import '/components/settings_button/settings_button_widget.dart';
+import '/components/title_and_see_all/title_and_see_all_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -132,9 +132,9 @@ class _ClubPageWidgetState extends State<ClubPageWidget> {
                         ),
                       ),
                       wrapWithModel(
-                        model: _model.supportButtonModel,
+                        model: _model.settingsButtonModel,
                         updateCallback: () => setState(() {}),
-                        child: const SupportButtonWidget(),
+                        child: const SettingsButtonWidget(),
                       ),
                     ],
                   ),
@@ -144,26 +144,31 @@ class _ClubPageWidgetState extends State<ClubPageWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Container(
-                        width: 393.0,
-                        height: 100.0,
-                        decoration: const BoxDecoration(),
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Text(
-                            'Club',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleLargeFamily,
-                                  fontSize: 40.0,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleLargeFamily),
-                                ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                        child: Container(
+                          width: 393.0,
+                          height: 69.0,
+                          decoration: const BoxDecoration(),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              'clubs.',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleLargeFamily,
+                                    fontSize: 40.0,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .titleLargeFamily),
+                                  ),
+                            ),
                           ),
                         ),
                       ),
@@ -172,7 +177,7 @@ class _ClubPageWidgetState extends State<ClubPageWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 8.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
@@ -250,7 +255,7 @@ class _ClubPageWidgetState extends State<ClubPageWidget> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 213.0,
+                  height: 250.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
@@ -263,89 +268,106 @@ class _ClubPageWidgetState extends State<ClubPageWidget> {
                         children: [
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                30.0, 10.0, 0.0, 0.0),
-                            child: Text(
-                              'for you',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleLargeFamily,
-                                    fontSize: 24.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleLargeFamily),
+                                15.0, 0.0, 0.0, 0.0),
+                            child: Container(
+                              width: 161.0,
+                              height: 59.0,
+                              decoration: const BoxDecoration(),
+                              child: Align(
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 10.0, 0.0, 0.0),
+                                  child: Text(
+                                    'for you',
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLargeFamily,
+                                          fontSize: 24.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLargeFamily),
+                                        ),
                                   ),
+                                ),
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 20.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
-                              },
-                              text: 'see all',
-                              options: FFButtonOptions(
-                                width: 80.0,
-                                height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .titleSmallFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      letterSpacing: 0.0,
-                                      decoration: TextDecoration.underline,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
-                                    ),
-                                elevation: 0.0,
-                                borderSide: const BorderSide(
-                                  width: 0.0,
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 15.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () {
+                                  print('Button pressed ...');
+                                },
+                                text: 'see all',
+                                options: FFButtonOptions(
+                                  width: 80.0,
+                                  height: 40.0,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                        decoration: TextDecoration.underline,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
+                                      ),
+                                  elevation: 0.0,
+                                  borderSide: const BorderSide(
+                                    width: 0.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(0.0),
                                 ),
-                                borderRadius: BorderRadius.circular(0.0),
                               ),
                             ),
                           ),
                         ],
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            30.0, 0.0, 30.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          height: 189.0,
+                          height: 154.0,
                           decoration: const BoxDecoration(),
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            primary: false,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              wrapWithModel(
-                                model: _model.clubCardModel1,
-                                updateCallback: () => setState(() {}),
-                                child: const ClubCardWidget(),
-                              ),
-                              wrapWithModel(
-                                model: _model.clubCardModel2,
-                                updateCallback: () => setState(() {}),
-                                child: const ClubCardWidget(),
-                              ),
-                            ].divide(const SizedBox(width: 10.0)),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: wrapWithModel(
+                                    model: _model.clubCardModel1,
+                                    updateCallback: () => setState(() {}),
+                                    child: const ClubCardWidget(),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -354,43 +376,42 @@ class _ClubPageWidgetState extends State<ClubPageWidget> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 1400.0,
+                  height: 250.0,
                   decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: double.infinity,
-                        height: 230.0,
-                        decoration: const BoxDecoration(),
-                        child: wrapWithModel(
-                          model: _model.clubListModel1,
-                          updateCallback: () => setState(() {}),
-                          child: const ClubListWidget(),
-                        ),
+                      wrapWithModel(
+                        model: _model.titleAndSeeAllModel,
+                        updateCallback: () => setState(() {}),
+                        child: const TitleAndSeeAllWidget(),
                       ),
-                      Container(
-                        width: double.infinity,
-                        height: 230.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: wrapWithModel(
-                          model: _model.clubListModel2,
-                          updateCallback: () => setState(() {}),
-                          child: const ClubListWidget(),
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 230.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: wrapWithModel(
-                          model: _model.clubListModel3,
-                          updateCallback: () => setState(() {}),
-                          child: const ClubListWidget(),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            30.0, 0.0, 30.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 154.0,
+                          decoration: const BoxDecoration(),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: wrapWithModel(
+                                    model: _model.clubCardModel2,
+                                    updateCallback: () => setState(() {}),
+                                    child: const ClubCardWidget(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],

@@ -58,7 +58,7 @@ class _DarkmodeWidgetState extends State<DarkmodeWidget> {
             height: 30.0,
             padding: const EdgeInsets.all(8.0),
             iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-            color: FlutterFlowTheme.of(context).primaryBackground,
+            color: const Color(0x00FFFFFF),
             textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                   color: Colors.white,

@@ -74,13 +74,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const HomePageWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const HomePageWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -107,12 +107,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const EventInformationWidget(),
         ),
         FFRoute(
-          name: 'Chat',
-          path: '/chat',
-          builder: (context, params) =>
-              params.isEmpty ? const NavBarPage(initialPage: 'Chat') : const ChatWidget(),
-        ),
-        FFRoute(
           name: 'LoginPage',
           path: '/loginPage',
           builder: (context, params) => const LoginPageWidget(),
@@ -123,6 +117,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'ClubPage')
               : const ClubPageWidget(),
+        ),
+        FFRoute(
+          name: 'ResultPage',
+          path: '/resultPage',
+          builder: (context, params) => const ResultPageWidget(),
+        ),
+        FFRoute(
+          name: 'chat_2_Details',
+          path: '/chat2Details',
+          builder: (context, params) => const Chat2DetailsWidget(),
+        ),
+        FFRoute(
+          name: 'AccountSettings',
+          path: '/accountSettings',
+          builder: (context, params) => const AccountSettingsWidget(),
+        ),
+        FFRoute(
+          name: 'ClubInformationCopy',
+          path: '/organizationInformation',
+          builder: (context, params) => const ClubInformationCopyWidget(),
+        ),
+        FFRoute(
+          name: 'Chat',
+          path: '/chat',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'Chat') : const ChatWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -291,7 +311,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/homePage';
+            return '/loginPage';
           }
           return null;
         },

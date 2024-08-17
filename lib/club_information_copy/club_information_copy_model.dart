@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'support_button_widget.dart' show SupportButtonWidget;
+import 'club_information_copy_widget.dart' show ClubInformationCopyWidget;
 import 'package:flutter/material.dart';
 
-class SupportButtonModel extends FlutterFlowModel<SupportButtonWidget> {
+class ClubInformationCopyModel
+    extends FlutterFlowModel<ClubInformationCopyWidget> {
   @override
   void initState(BuildContext context) {}
 

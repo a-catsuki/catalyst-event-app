@@ -1,18 +1,18 @@
 import '../database.dart';
 
-class UserTable extends SupabaseTable<UserRow> {
+class UsersTable extends SupabaseTable<UsersRow> {
   @override
-  String get tableName => 'user';
+  String get tableName => 'users';
 
   @override
-  UserRow createRow(Map<String, dynamic> data) => UserRow(data);
+  UsersRow createRow(Map<String, dynamic> data) => UsersRow(data);
 }
 
-class UserRow extends SupabaseDataRow {
-  UserRow(super.data);
+class UsersRow extends SupabaseDataRow {
+  UsersRow(super.data);
 
   @override
-  SupabaseTable get table => UserTable();
+  SupabaseTable get table => UsersTable();
 
   String get id => getField<String>('id')!;
   set id(String value) => setField<String>('id', value);
@@ -41,6 +41,11 @@ class UserRow extends SupabaseDataRow {
   DateTime get joined => getField<DateTime>('joined')!;
   set joined(DateTime value) => setField<DateTime>('joined', value);
 
-  String? get email => getField<String>('email');
-  set email(String? value) => setField<String>('email', value);
+  List<dynamic> get savedEvents => getListField<dynamic>('savedEvents');
+  set savedEvents(List<dynamic>? value) =>
+      setListField<dynamic>('savedEvents', value);
+
+  List<String> get joinedClubs => getListField<String>('joinedClubs');
+  set joinedClubs(List<String>? value) =>
+      setListField<String>('joinedClubs', value);
 }

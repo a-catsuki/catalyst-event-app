@@ -1,9 +1,11 @@
+import '/chat_group_imported/chat_thread_component/chat_thread_component_widget.dart';
 import '/components/app_icon/app_icon_widget.dart';
 import '/components/darkmode/darkmode_widget.dart';
-import '/components/support_button/support_button_widget.dart';
+import '/components/settings_button/settings_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'chat_model.dart';
 export 'chat_model.dart';
 
@@ -83,12 +85,69 @@ class _ChatWidgetState extends State<ChatWidget> {
                   Align(
                     alignment: const AlignmentDirectional(1.0, -1.0),
                     child: wrapWithModel(
-                      model: _model.supportButtonModel,
+                      model: _model.settingsButtonModel,
                       updateCallback: () => setState(() {}),
-                      child: const SupportButtonWidget(),
+                      child: const SettingsButtonWidget(),
                     ),
                   ),
                 ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                      child: Container(
+                        width: 393.0,
+                        height: 69.0,
+                        decoration: const BoxDecoration(),
+                        child: Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            'chat.',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleLargeFamily,
+                                  fontSize: 40.0,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleLargeFamily),
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: double.infinity,
+                height: 539.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: wrapWithModel(
+                          model: _model.chatThreadComponentModel,
+                          updateCallback: () => setState(() {}),
+                          child: const ChatThreadComponentWidget(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

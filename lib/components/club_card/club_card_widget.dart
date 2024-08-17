@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -50,7 +51,7 @@ class _ClubCardWidgetState extends State<ClubCardWidget> {
         width: 197.0,
         height: 145.0,
         decoration: BoxDecoration(
-          color: const Color(0xFFFAFAFA),
+          color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(15.0),
           shape: BoxShape.rectangle,
         ),
@@ -106,57 +107,126 @@ class _ClubCardWidgetState extends State<ClubCardWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 20.0, 4.0),
-                              child: Text(
-                                'club name',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      fontSize: 13.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
+                                  0.0, 0.0, 0.0, 4.0),
+                              child: FutureBuilder<List<ClubsRow>>(
+                                future: ClubsTable().querySingleRow(
+                                  queryFn: (q) => q,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<ClubsRow> textClubsRowList =
+                                      snapshot.data!;
+
+                                  final textClubsRow =
+                                      textClubsRowList.isNotEmpty
+                                          ? textClubsRowList.first
+                                          : null;
+
+                                  return Text(
+                                    valueOrDefault<String>(
+                                      textClubsRow?.name,
+                                      'Club Name',
                                     ),
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          fontSize: 15.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
+                                  );
+                                },
                               ),
                             ),
                           ),
                           Align(
                             alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 30.0, 0.0),
-                              child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
-                                },
-                                text: 'follow',
-                                options: FFButtonOptions(
-                                  width: 60.0,
-                                  height: 20.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      7.0, 0.0, 7.0, 0.0),
-                                  iconPadding: const EdgeInsets.all(0.0),
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodySmall
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodySmallFamily,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
-                                      ),
-                                  elevation: 3.0,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
+                            child: FutureBuilder<List<ClubsRow>>(
+                              future: ClubsTable().querySingleRow(
+                                queryFn: (q) => q,
                               ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<ClubsRow> buttonClubsRowList =
+                                    snapshot.data!;
+
+                                final buttonClubsRow =
+                                    buttonClubsRowList.isNotEmpty
+                                        ? buttonClubsRowList.first
+                                        : null;
+
+                                return FFButtonWidget(
+                                  onPressed: () async {
+                                    await UsersTable().update(
+                                      data: {
+                                        'joinedClubs': [],
+                                      },
+                                      matchingRows: (rows) => rows,
+                                    );
+                                  },
+                                  text: 'follow',
+                                  options: FFButtonOptions(
+                                    width: 60.0,
+                                    height: 20.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        7.0, 0.0, 7.0, 0.0),
+                                    iconPadding: const EdgeInsets.all(0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmallFamily),
+                                        ),
+                                    elevation: 3.0,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  showLoadingIndicator: false,
+                                );
+                              },
                             ),
                           ),
                         ],
@@ -225,7 +295,7 @@ class _ClubCardWidgetState extends State<ClubCardWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            '200 members',
+                            'NUM members',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -261,7 +331,7 @@ class _ClubCardWidgetState extends State<ClubCardWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            'brief description',
+                            'faculty',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(

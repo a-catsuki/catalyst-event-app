@@ -1,7 +1,7 @@
 import '/components/app_icon/app_icon_widget.dart';
 import '/components/darkmode/darkmode_widget.dart';
 import '/components/event_card/event_card_widget.dart';
-import '/components/support_button/support_button_widget.dart';
+import '/components/settings_button/settings_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -44,7 +44,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF1F4F8),
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -89,9 +88,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     Align(
                       alignment: const AlignmentDirectional(1.0, -1.0),
                       child: wrapWithModel(
-                        model: _model.supportButtonModel,
+                        model: _model.settingsButtonModel,
                         updateCallback: () => setState(() {}),
-                        child: const SupportButtonWidget(),
+                        child: const SettingsButtonWidget(),
                       ),
                     ),
                   ],
@@ -141,53 +140,56 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           ),
                         ],
                       ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: const AlignmentDirectional(-0.05, -0.06),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                'name name',
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineLarge
-                                    .override(
-                                      fontFamily: 'Urbanist',
-                                      color: const Color(0xFF101213),
-                                      fontSize: 20.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey('Urbanist'),
-                                    ),
+                      Align(
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: const AlignmentDirectional(-0.05, -0.06),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  'name name',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .override(
+                                        fontFamily: 'Urbanist',
+                                        color: const Color(0xFF101213),
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey('Urbanist'),
+                                      ),
+                                ),
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: const AlignmentDirectional(-0.16, 0.24),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 16.0),
-                              child: Text(
-                                'email address',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      color: const Color(0xFF57636C),
-                                      fontSize: 10.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey('Plus Jakarta Sans'),
-                                    ),
+                            Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 0.0, 16.0),
+                                child: Text(
+                                  'email address',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Plus Jakarta Sans',
+                                        color: const Color(0xFF57636C),
+                                        fontSize: 10.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey('Plus Jakarta Sans'),
+                                      ),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -240,23 +242,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0.0, 0.0),
                       child: wrapWithModel(
-                        model: _model.eventCardModel1,
-                        updateCallback: () => setState(() {}),
-                        child: const EventCardWidget(),
-                      ),
-                    ),
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: wrapWithModel(
-                        model: _model.eventCardModel2,
-                        updateCallback: () => setState(() {}),
-                        child: const EventCardWidget(),
-                      ),
-                    ),
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: wrapWithModel(
-                        model: _model.eventCardModel3,
+                        model: _model.eventCardModel,
                         updateCallback: () => setState(() {}),
                         child: const EventCardWidget(),
                       ),
@@ -269,14 +255,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Container(
-                      width: 144.0,
-                      height: 40.0,
+                      width: 163.0,
+                      height: 44.0,
                       decoration: const BoxDecoration(),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
                         },
-                        text: 'Add new event',
+                        text: 'add new event',
                         icon: Icon(
                           Icons.add,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -290,22 +276,25 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           color: const Color(0xFFFFE199),
                           textStyle: FlutterFlowTheme.of(context)
-                              .headlineMedium
+                              .headlineSmall
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .headlineMediumFamily,
-                                fontSize: 26.0,
+                                    .headlineSmallFamily,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 30.0,
                                 letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .headlineMediumFamily),
+                                        .headlineSmallFamily),
                               ),
                           elevation: 3.0,
                           borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(17.0),
                         ),
                       ),
                     ),

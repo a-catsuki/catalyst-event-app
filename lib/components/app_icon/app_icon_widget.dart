@@ -40,7 +40,7 @@ class _AppIconWidgetState extends State<AppIconWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 0.0),
       child: Icon(
         FFIcons.kflareLogo,
-        color: Color(0xFFFFD257),
+        color: Color(0xFFFFDD8A),
         size: 40.0,
       ),
     );

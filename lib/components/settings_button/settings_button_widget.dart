@@ -3,18 +3,18 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'support_button_model.dart';
-export 'support_button_model.dart';
+import 'settings_button_model.dart';
+export 'settings_button_model.dart';
 
-class SupportButtonWidget extends StatefulWidget {
-  const SupportButtonWidget({super.key});
+class SettingsButtonWidget extends StatefulWidget {
+  const SettingsButtonWidget({super.key});
 
   @override
-  State<SupportButtonWidget> createState() => _SupportButtonWidgetState();
+  State<SettingsButtonWidget> createState() => _SettingsButtonWidgetState();
 }
 
-class _SupportButtonWidgetState extends State<SupportButtonWidget> {
-  late SupportButtonModel _model;
+class _SettingsButtonWidgetState extends State<SettingsButtonWidget> {
+  late SettingsButtonModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -25,7 +25,7 @@ class _SupportButtonWidgetState extends State<SupportButtonWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SupportButtonModel());
+    _model = createModel(context, () => SettingsButtonModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -44,10 +44,10 @@ class _SupportButtonWidgetState extends State<SupportButtonWidget> {
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
         child: FFButtonWidget(
-          onPressed: () {
-            print('Button pressed ...');
+          onPressed: () async {
+            context.pushNamed('AccountSettings');
           },
-          text: 'Support',
+          text: 'settings',
           options: FFButtonOptions(
             height: 40.0,
             padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),

@@ -7,23 +7,15 @@ class ClubListModel extends FlutterFlowModel<ClubListWidget> {
   ///  State fields for stateful widgets in this component.
 
   // Model for ClubCard component.
-  late ClubCardModel clubCardModel1;
-  // Model for ClubCard component.
-  late ClubCardModel clubCardModel2;
-  // Model for ClubCard component.
-  late ClubCardModel clubCardModel3;
+  late ClubCardModel clubCardModel;
 
   @override
   void initState(BuildContext context) {
-    clubCardModel1 = createModel(context, () => ClubCardModel());
-    clubCardModel2 = createModel(context, () => ClubCardModel());
-    clubCardModel3 = createModel(context, () => ClubCardModel());
+    clubCardModel = createModel(context, () => ClubCardModel());
   }
 
   @override
   void dispose() {
-    clubCardModel1.dispose();
-    clubCardModel2.dispose();
-    clubCardModel3.dispose();
+    clubCardModel.dispose();
   }
 }

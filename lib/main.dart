@@ -9,6 +9,7 @@ import 'auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'flutter_flow/internationalization.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
@@ -37,6 +38,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
   late AppStateNotifier _appStateNotifier;
@@ -61,6 +64,10 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  void setLocale(String language) {
+    setState(() => _locale = createLocale(language));
+  }
+
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
         FlutterFlowTheme.saveThemeMode(mode);
@@ -71,11 +78,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       title: 'Flare',
       localizationsDelegates: const [
+        FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('en', '')],
+      locale: _locale,
+      supportedLocales: const [
+        Locale('en'),
+      ],
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: false,
@@ -116,9 +127,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': const HomePageWidget(),
-      'Chat': const ChatWidget(),
       'ClubPage': const ClubPageWidget(),
       'Profile': const ProfileWidget(),
+      'Chat': const ChatWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -142,10 +153,10 @@ class _NavBarPageState extends State<NavBarPage> {
         unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
         selectedBackgroundColor: const Color(0x1314181B),
         borderRadius: 17.0,
-        itemBorderRadius: 8.0,
-        margin: const EdgeInsetsDirectional.fromSTEB(17.0, 15.0, 17.0, 15.0),
+        itemBorderRadius: 15.0,
+        margin: const EdgeInsetsDirectional.fromSTEB(17.0, 15.0, 17.0, 10.0),
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 2.0),
-        width: MediaQuery.sizeOf(context).width * 0.9,
+        width: MediaQuery.sizeOf(context).width * 0.8,
         elevation: 0.0,
         items: [
           FloatingNavbarItem(
@@ -167,7 +178,7 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.mark_chat_unread_outlined,
+                  Icons.account_balance_rounded,
                   color: currentIndex == 1
                       ? FlutterFlowTheme.of(context).primaryText
                       : FlutterFlowTheme.of(context).secondaryText,
@@ -181,7 +192,7 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.account_balance_rounded,
+                  Icons.person,
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primaryText
                       : FlutterFlowTheme.of(context).secondaryText,
@@ -195,7 +206,7 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.person,
+                  Icons.mark_chat_unread_outlined,
                   color: currentIndex == 3
                       ? FlutterFlowTheme.of(context).primaryText
                       : FlutterFlowTheme.of(context).secondaryText,
