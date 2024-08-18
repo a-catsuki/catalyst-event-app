@@ -207,12 +207,18 @@ dynamic deserializeParam<T>(
         switch (T) {
           case OrganisationsRow:
             return OrganisationsRow(data);
+          case EverythingRow:
+            return EverythingRow(data);
+          case ChatRow:
+            return ChatRow(data);
           case SponsorsRow:
             return SponsorsRow(data);
           case ClubsRow:
             return ClubsRow(data);
           case EventsRow:
             return EventsRow(data);
+          case DatabaseRow:
+            return DatabaseRow(data);
           case UsersRow:
             return UsersRow(data);
           default:

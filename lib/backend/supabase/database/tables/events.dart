@@ -45,20 +45,23 @@ class EventsRow extends SupabaseDataRow {
   double? get reviewTotal => getField<double>('reviewTotal');
   set reviewTotal(double? value) => setField<double>('reviewTotal', value);
 
-  List<dynamic> get comments => getListField<dynamic>('comments');
-  set comments(List<dynamic>? value) =>
-      setListField<dynamic>('comments', value);
-
-  List<dynamic> get universities => getListField<dynamic>('universities');
-  set universities(List<dynamic> value) =>
-      setListField<dynamic>('universities', value);
-
   int get numReviews => getField<int>('numReviews')!;
   set numReviews(int value) => setField<int>('numReviews', value);
 
   String get id => getField<String>('id')!;
   set id(String value) => setField<String>('id', value);
 
-  dynamic get sponsors => getField<dynamic>('sponsors');
-  set sponsors(dynamic value) => setField<dynamic>('sponsors', value);
+  List<String> get comments => getListField<String>('comments');
+  set comments(List<String>? value) => setListField<String>('comments', value);
+
+  List<String> get universities => getListField<String>('universities');
+  set universities(List<String>? value) =>
+      setListField<String>('universities', value);
+
+  List<String> get sponsors => getListField<String>('sponsors');
+  set sponsors(List<String>? value) => setListField<String>('sponsors', value);
+
+  List<String> get organisers => getListField<String>('organisers');
+  set organisers(List<String>? value) =>
+      setListField<String>('organisers', value);
 }

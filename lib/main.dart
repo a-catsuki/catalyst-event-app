@@ -127,9 +127,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': const HomePageWidget(),
+      'chatPage': const ChatPageWidget(),
       'ClubPage': const ClubPageWidget(),
-      'Profile': const ProfileWidget(),
-      'Chat': const ChatWidget(),
+      'profilePage': const ProfilePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -178,7 +178,7 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.account_balance_rounded,
+                  Icons.mark_chat_unread_outlined,
                   color: currentIndex == 1
                       ? FlutterFlowTheme.of(context).primaryText
                       : FlutterFlowTheme.of(context).secondaryText,
@@ -192,7 +192,7 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.person,
+                  Icons.account_balance_rounded,
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primaryText
                       : FlutterFlowTheme.of(context).secondaryText,
@@ -206,7 +206,7 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.mark_chat_unread_outlined,
+                  Icons.person,
                   color: currentIndex == 3
                       ? FlutterFlowTheme.of(context).primaryText
                       : FlutterFlowTheme.of(context).secondaryText,

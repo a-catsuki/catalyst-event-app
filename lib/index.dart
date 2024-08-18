@@ -1,17 +1,27 @@
 // Export pages
-export '/home_page/home_page_widget.dart' show HomePageWidget;
+export '/main_pages/home_page/home_page_widget.dart' show HomePageWidget;
 export '/club_information/club_information_widget.dart'
     show ClubInformationWidget;
-export '/profile/profile_widget.dart' show ProfileWidget;
+export '/main_pages/profile_page/profile_page_widget.dart'
+    show ProfilePageWidget;
 export '/event_information/event_information_widget.dart'
     show EventInformationWidget;
 export '/auth/login_page/login_page_widget.dart' show LoginPageWidget;
-export '/club_page/club_page_widget.dart' show ClubPageWidget;
+export '/main_pages/club_page/club_page_widget.dart' show ClubPageWidget;
 export '/result_page/result_page_widget.dart' show ResultPageWidget;
-export '/chat_group_imported/chat_2_details/chat2_details_widget.dart'
-    show Chat2DetailsWidget;
-export '/auth/account_settings/account_settings_widget.dart'
+export '/settings/account_settings/account_settings_widget.dart'
     show AccountSettingsWidget;
-export '/club_information_copy/club_information_copy_widget.dart'
-    show ClubInformationCopyWidget;
-export '/chat/chat_widget.dart' show ChatWidget;
+export '/organization_information/organization_information_widget.dart'
+    show OrganizationInformationWidget;
+export '/main_pages/chat_page/chat_page_widget.dart' show ChatPageWidget;
+export '/onboarding/onboarding_page/onboarding_page_widget.dart'
+    show OnboardingPageWidget;
+export '/onboarding/user_onboarding/user_onboarding_widget.dart'
+    show UserOnboardingWidget;
+export '/onboarding/club_onboarding/club_onboarding_widget.dart'
+    show ClubOnboardingWidget;
+export '/organiser_pages/create_event/create_event_widget.dart'
+    show CreateEventWidget;
+export '/settings/recover_password/recover_password_widget.dart'
+    show RecoverPasswordWidget;
+export '/swipe_deck/swipe_deck_widget.dart' show SwipeDeckWidget;

@@ -20,9 +20,6 @@ class ClubsRow extends SupabaseDataRow {
   double? get avgRating => getField<double>('avgRating');
   set avgRating(double? value) => setField<double>('avgRating', value);
 
-  bool get verified => getField<bool>('verified')!;
-  set verified(bool value) => setField<bool>('verified', value);
-
   DateTime get joined => getField<DateTime>('joined')!;
   set joined(DateTime value) => setField<DateTime>('joined', value);
 
@@ -35,17 +32,22 @@ class ClubsRow extends SupabaseDataRow {
   double get clickRate => getField<double>('clickRate')!;
   set clickRate(double value) => setField<double>('clickRate', value);
 
-  List<dynamic> get currentEvents => getListField<dynamic>('currentEvents');
-  set currentEvents(List<dynamic>? value) =>
-      setListField<dynamic>('currentEvents', value);
-
-  List<dynamic> get pastEvents => getListField<dynamic>('pastEvents');
-  set pastEvents(List<dynamic>? value) =>
-      setListField<dynamic>('pastEvents', value);
-
   String get id => getField<String>('id')!;
   set id(String value) => setField<String>('id', value);
 
   int? get followers => getField<int>('followers');
   set followers(int? value) => setField<int>('followers', value);
+
+  String? get university => getField<String>('university');
+  set university(String? value) => setField<String>('university', value);
+
+  List<String> get categories => getListField<String>('categories');
+  set categories(List<String> value) =>
+      setListField<String>('categories', value);
+
+  List<String> get eventsId => getListField<String>('eventsId');
+  set eventsId(List<String>? value) => setListField<String>('eventsId', value);
+
+  String? get description => getField<String>('description');
+  set description(String? value) => setField<String>('description', value);
 }

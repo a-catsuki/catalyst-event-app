@@ -41,11 +41,11 @@ class UsersRow extends SupabaseDataRow {
   DateTime get joined => getField<DateTime>('joined')!;
   set joined(DateTime value) => setField<DateTime>('joined', value);
 
-  List<dynamic> get savedEvents => getListField<dynamic>('savedEvents');
-  set savedEvents(List<dynamic>? value) =>
-      setListField<dynamic>('savedEvents', value);
-
   List<String> get joinedClubs => getListField<String>('joinedClubs');
   set joinedClubs(List<String>? value) =>
       setListField<String>('joinedClubs', value);
+
+  List<String> get savedEvents => getListField<String>('savedEvents');
+  set savedEvents(List<String>? value) =>
+      setListField<String>('savedEvents', value);
 }

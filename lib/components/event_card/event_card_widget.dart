@@ -7,7 +7,12 @@ import 'event_card_model.dart';
 export 'event_card_model.dart';
 
 class EventCardWidget extends StatefulWidget {
-  const EventCardWidget({super.key});
+  const EventCardWidget({
+    super.key,
+    required this.eventId,
+  });
+
+  final String? eventId;
 
   @override
   State<EventCardWidget> createState() => _EventCardWidgetState();
@@ -43,7 +48,10 @@ class _EventCardWidgetState extends State<EventCardWidget> {
       padding: const EdgeInsetsDirectional.fromSTEB(10.0, 12.0, 10.0, 15.0),
       child: FutureBuilder<List<EventsRow>>(
         future: EventsTable().querySingleRow(
-          queryFn: (q) => q,
+          queryFn: (q) => q.eq(
+            'id',
+            widget.eventId,
+          ),
         ),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
@@ -105,7 +113,10 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   25.0, 10.0, 0.0, 0.0),
                               child: Text(
-                                'event title',
+                                valueOrDefault<String>(
+                                  containerEventsRow?.name,
+                                  'event title',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -150,20 +161,38 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  'club name',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        fontSize: 10.0,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
-                                      ),
+                                Builder(
+                                  builder: (context) {
+                                    final clubs = containerEventsRow?.organisers
+                                            .toList() ??
+                                        [];
+
+                                    return Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate(clubs.length,
+                                          (clubsIndex) {
+                                        final clubsItem = clubs[clubsIndex];
+                                        return Text(
+                                          'club name',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                fontSize: 10.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
+                                              ),
+                                        );
+                                      }).divide(const SizedBox(width: 4.0)),
+                                    );
+                                  },
                                 ),
                               ],
                             ),
@@ -188,7 +217,20 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'FRI 8 AUG 6:00 PM',
+                                    valueOrDefault<String>(
+                                      '${dateTimeFormat(
+                                        "MMMEd",
+                                        containerEventsRow?.startDateTime,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      )}${dateTimeFormat(
+                                        "jm",
+                                        containerEventsRow?.startDateTime,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      )}',
+                                      'FRI 8 AUG 6:00 PM',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -227,7 +269,20 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'FRI 8 AUG 8:00 PM',
+                                    valueOrDefault<String>(
+                                      '${dateTimeFormat(
+                                        "MMMEd",
+                                        containerEventsRow?.endDateTime,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      )}${dateTimeFormat(
+                                        "jm",
+                                        containerEventsRow?.endDateTime,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      )}',
+                                      'FRI 8 AUG 8:00 PM',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -266,7 +321,10 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'location',
+                                    valueOrDefault<String>(
+                                      containerEventsRow?.venue,
+                                      'location',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -302,7 +360,10 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: Text(
-                                  'NUM going',
+                                  valueOrDefault<String>(
+                                    containerEventsRow?.likes.toString(),
+                                    'likes',
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

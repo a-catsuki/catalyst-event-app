@@ -8,7 +8,6 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -92,14 +91,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ClubInformation',
           path: '/clubInformation',
-          builder: (context, params) => const ClubInformationWidget(),
+          builder: (context, params) => ClubInformationWidget(
+            clubId: params.getParam(
+              'clubId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
-          name: 'Profile',
-          path: '/profile',
+          name: 'profilePage',
+          path: '/profilePage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Profile')
-              : const ProfileWidget(),
+              ? const NavBarPage(initialPage: 'profilePage')
+              : const ProfilePageWidget(),
         ),
         FFRoute(
           name: 'EventInformation',
@@ -121,12 +125,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ResultPage',
           path: '/resultPage',
-          builder: (context, params) => const ResultPageWidget(),
-        ),
-        FFRoute(
-          name: 'chat_2_Details',
-          path: '/chat2Details',
-          builder: (context, params) => const Chat2DetailsWidget(),
+          builder: (context, params) => ResultPageWidget(
+            search: params.getParam(
+              'search',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'AccountSettings',
@@ -134,15 +138,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AccountSettingsWidget(),
         ),
         FFRoute(
-          name: 'ClubInformationCopy',
+          name: 'OrganizationInformation',
           path: '/organizationInformation',
-          builder: (context, params) => const ClubInformationCopyWidget(),
+          builder: (context, params) => OrganizationInformationWidget(
+            organisationId: params.getParam(
+              'organisationId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
-          name: 'Chat',
-          path: '/chat',
-          builder: (context, params) =>
-              params.isEmpty ? const NavBarPage(initialPage: 'Chat') : const ChatWidget(),
+          name: 'chatPage',
+          path: '/chatPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'chatPage')
+              : const ChatPageWidget(),
+        ),
+        FFRoute(
+          name: 'OnboardingPage',
+          path: '/onboardingPage',
+          builder: (context, params) => const OnboardingPageWidget(),
+        ),
+        FFRoute(
+          name: 'userOnboarding',
+          path: '/userOnboarding',
+          requireAuth: true,
+          builder: (context, params) => const UserOnboardingWidget(),
+        ),
+        FFRoute(
+          name: 'ClubOnboarding',
+          path: '/clubOnboarding',
+          builder: (context, params) => const ClubOnboardingWidget(),
+        ),
+        FFRoute(
+          name: 'CreateEvent',
+          path: '/createEvent',
+          builder: (context, params) => const CreateEventWidget(),
+        ),
+        FFRoute(
+          name: 'recoverPassword',
+          path: '/recoverPassword',
+          builder: (context, params) => const RecoverPasswordWidget(),
+        ),
+        FFRoute(
+          name: 'SwipeDeck',
+          path: '/swipeDeck',
+          builder: (context, params) => const SwipeDeckWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -325,14 +366,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/flare_logo.png',
+                      width: MediaQuery.sizeOf(context).width * 0.6,
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
                 )

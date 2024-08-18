@@ -203,8 +203,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                   alignment: const Alignment(-1.0, 0),
                                   child: TabBar(
                                     isScrollable: true,
-                                    labelColor: const Color(0xFFFFD774),
-                                    unselectedLabelColor: const Color(0x4C57636C),
+                                    labelColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    unselectedLabelColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
                                     labelPadding: const EdgeInsets.all(16.0),
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .displaySmall
@@ -234,7 +237,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       .displaySmallFamily),
                                         ),
                                     indicatorColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        FlutterFlowTheme.of(context).secondary,
                                     indicatorWeight: 4.0,
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 16.0, 12.0),
@@ -282,6 +285,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .labelMediumFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
@@ -331,7 +338,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .secondary,
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -449,7 +456,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .secondary,
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -608,8 +615,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                 fontFamily: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmallFamily,
-                                                                color: Colors
-                                                                    .white,
+                                                                color: const Color(
+                                                                    0xFF14181B),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 useGoogleFonts: GoogleFonts
@@ -977,6 +984,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .labelMediumFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
@@ -1026,7 +1037,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .secondary,
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1144,7 +1155,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .secondary,
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1283,7 +1294,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .secondary,
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1426,8 +1437,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       }
 
                                                       context.pushNamedAuth(
-                                                          'HomePage',
-                                                          context.mounted);
+                                                        'OnboardingPage',
+                                                        context.mounted,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          kTransitionInfoKey:
+                                                              const TransitionInfo(
+                                                            hasTransition: true,
+                                                            transitionType:
+                                                                PageTransitionType
+                                                                    .bottomToTop,
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    50),
+                                                          ),
+                                                        },
+                                                      );
                                                     },
                                                     text: 'Create Account',
                                                     options: FFButtonOptions(
@@ -1450,7 +1475,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primary,
+                                                              .secondary,
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1459,8 +1484,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                                                 fontFamily: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmallFamily,
-                                                                color: Colors
-                                                                    .white,
+                                                                color: const Color(
+                                                                    0xFF14181B),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 useGoogleFonts: GoogleFonts
